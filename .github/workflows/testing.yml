@@ -7,7 +7,6 @@ jobs:
       - name: get source from repo
       - uses: actions/checkout@v3
       - name: Install dependensis
-      - uses: npm install
         run: npm ci
       - name: test
         run: npm run test
