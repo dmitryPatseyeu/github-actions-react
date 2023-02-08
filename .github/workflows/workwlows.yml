@@ -1,5 +1,10 @@
 name: deploy react app
-on: push
+on:
+  push:
+    branches:
+      - main
+    path-ignore:
+      - '.github/workflows/*'
 jobs:
   test:
     runs-on: ubuntu-latest
