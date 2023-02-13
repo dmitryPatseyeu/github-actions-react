@@ -3,14 +3,19 @@ on:
   push:
     branches:
       - main
-    #path-ignore:
-     # - '.github/workflows/*'
+      #path-ignore:
+      #'.github/workflows/*'
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - name: get source from repo
         uses: actions/checkout@v3
+      - name: cash dependysis
+        uses: actions/cache@v3
+        with:
+            path: ~/.npm
+            key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependensis
         run: npm ci
       - name: test
@@ -21,6 +26,11 @@ jobs:
     steps:
       - name: get source from repo
         uses: actions/checkout@v3
+      - name: cash dependysis
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependensis
         run: npm ci
       - name: check es lint
@@ -31,6 +41,11 @@ jobs:
     steps:
       - name: get source from repo
         uses: actions/checkout@v3
+      - name: cash dependysis
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependensis
         run: npm ci
       - name: build project
